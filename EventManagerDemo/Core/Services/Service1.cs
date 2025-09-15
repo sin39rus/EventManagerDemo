@@ -20,12 +20,18 @@ namespace EventManagerDemo.Core.Services
             Console.WriteLine("Service1 started");
             while (!_cancellationToken.IsCancellationRequested)
             {
-                Console.WriteLine("Service1 обрабатываем данные.");
-                var data = await DataProcessingAsync();// Обработка займет 5 секунд.
-                Console.WriteLine($"Service1 данные успешно обработаны, получено {data.Count} строк.");
-                _eventManager.Service1DataProcessed(this, data); //Сообщаем менеджеру что мы обработали данные
+                try
+                {
+                    Console.WriteLine("Service1 обрабатываем данные.");
+                    var data = await DataProcessingAsync();// Обработка займет 5 секунд.
+                    Console.WriteLine($"Service1 данные успешно обработаны, получено {data.Count} строк.");
+                    _eventManager.Service1DataProcessed(this, data); //Сообщаем менеджеру что мы обработали данные
 
-                await Task.Delay(TimeSpan.FromSeconds(10), _cancellationToken); //Отдыхаем что бы не грузить поток.
+                    await Task.Delay(TimeSpan.FromSeconds(10), _cancellationToken); //Отдыхаем что бы не грузить поток.
+                }
+                catch
+                {
+                }
             }
             Console.WriteLine("Service1 stopped");
             _disposed = true;

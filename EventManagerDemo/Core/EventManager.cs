@@ -1,6 +1,5 @@
 ﻿using EventManagerDemo.Core.Services;
 using EventManagerDemo.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EventManagerDemo.Core
 {

@@ -26,7 +26,7 @@ namespace EventManagerDemo.Core.Services
             while (!_cancellationToken.IsCancellationRequested)
             {
                 int dataProcessed = 0;
-                while (_data.Any())
+                while (_data.Any() && !_cancellationToken.IsCancellationRequested)
                 {
                     dataProcessed++;
                     var item = _data.Pop();

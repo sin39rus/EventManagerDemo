@@ -16,7 +16,7 @@ namespace EventManagerDemo
             service2.StartAsync();
             Console.ReadLine();//Ставим поток в ожидание
             cancellationTokenSource.Cancel();//Останавливаем службы
-            while (service1._disposed && service2._disposed) //Ожидаем когда обе службы завершат свою работу.
+            while (!service1._disposed || !service2._disposed) //Ожидаем когда обе службы завершат свою работу.
             {
 
             }
