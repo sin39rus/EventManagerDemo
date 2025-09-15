@@ -9,7 +9,6 @@ namespace EventManagerDemo
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
             Console.WriteLine("Инициируем службы");
-            LoggerService loggerService = new LoggerService();
             Service1 service1 = new Service1(cancellationTokenSource.Token);
             Service2 service2 = new Service2(cancellationTokenSource.Token);
             Console.WriteLine("Запускаем службы");
